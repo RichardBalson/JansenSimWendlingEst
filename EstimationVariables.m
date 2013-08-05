@@ -19,7 +19,7 @@
 
 % Image names and handling
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~`
-if ((min(MVI(:,1))==max(MVI(:,1))) && (min(MVI(:,2))==max(MVI(:,2))) && (min(MVI(:,3))==max(MVI(:,3))))
+if ((min(MVI(:,1))==max(MVI(:,1))) && (min(MVI(:,2))==max(MVI(:,2))))
     Parameter_varying=0; % Initialse parameter m, If m = 1 parameter uncertainty increases to account for the fact that the parameters vary in time. m is always set to zero, and is adjusted in the code accordingly
     simulation_initial_name = [Estimation_Type,'f',int2str(SimulationSettings.fs),...
         'A,B',int2str(MVI(1,1)),',',int2str(MVI(1,2)),'S',num2str(SimulationSettings.stochastic)]; % Initaite name for simulation, used for saving purposes

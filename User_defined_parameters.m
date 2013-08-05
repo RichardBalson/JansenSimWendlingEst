@@ -48,8 +48,8 @@ if simulate % Specify parameters for simulation purposes
     SimulationSettings.simulation_time =100; %Time for simulation in seconds 
     SimulationSettings.slope_time =1; % Specifies the time over which the model gain should be altered
     SimulationSettings.number_of_sigma_input = 1; % Used to determine standard deviation of input if  1: 68.27% of realisations within physiolgical range, 2: 95.45, 3: 99.73 4: 99.994
-    SimulationSettings.stochastic = 0.5; % Used to specifiy the stochastic adjustment on the input 1 is no adjustment. <1 downscalling, >1 upscaling
-    SimulationSettings.Parameter_index = 7; % Choose parameters to be simulated: 1 = Seizure Parameter from Wendling 2002;
+    SimulationSettings.stochastic = 1; % Used to specifiy the stochastic adjustment on the input 1 is no adjustment. <1 downscalling, >1 upscaling
+    SimulationSettings.Parameter_index = 4; % Choose parameters to be simulated: 1 = Seizure Parameter from Wendling 2002;
     %  2 = Seizure Parameter from Wendling 2005;...
     %  3 = Altered excitability;
     %  4 = Parameters at midpoint of their range;
@@ -153,21 +153,12 @@ Image_handling_states = [0 0 0 0 0 0 0 0 0 0 0 0; 0 0 0 0 0 0 0 0 0 0 0 0]; % He
                                                                             % if the value is one the relevant figure is plotted, otherwise it is not.
                                                                             % The columns indicate the state to plot and the rows indicate whether the whole simulation or a zoomed in ploted should be plotted.
                                                                             % Column one corresponds with state 1 and so forth.
-Image_handling_inputs = [0 0 0 0;0 0 0 0];  % Here a decision is made whether to plot specific states, 
-                                                                            % if the value is one the relevant figure is plotted, otherwise it is not.
-                                                                            % The columns indicate the state to plot and the rows indicate whether the whole simulation or a zoomed in ploted should be plotted.
-                                                                            % Here column 1-4 are Vp,Ve,Vsi and Vfi respectively.
 
-Image_handling_firing_rates = [0 0 0 0]; % Here a decision is made whether to plot specific states, 
-                                                                            % if the value is one the relevant figure is plotted, otherwise it is not.
-                                                                            % The columns indicate the firing rate to plot. this is a three image plot where the input potential population firing rate and output potential are plotted.
-                                                                            % Here column 1-4 are Vp,Ve,Vsi and Vfi respectively.
 
-Image_handling_multi = [1 0 1;0 0 0];%  % Here a decision is made whether to plot specific states, 
+Image_handling_multi = [1 1;0 0];%  % Here a decision is made whether to plot specific states, 
                                                                             % if the value is one the relevant figure is plotted, otherwise it is not.
                                                                             % The columns indicate the figures to be plotted.
-                                                                            % Here column 1-3 are for all the model states, all the model states inputs, all the model parameters including the input mean.
-Estimation_Error = 1; % Plt the error on each estimate on a single plot
+                                                                            % Here column 1-2 are for all the model states and all the model parameters including the input mean.
 
 plot_uncertaintyMulti =0;
 % Zoom parameters (seconds)

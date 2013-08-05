@@ -69,7 +69,21 @@ Min_G =0;
 Max = [Max_A, Max_B, Max_G];
 Min = [Min_A, Min_B, Min_G];
 
-frequency_limits =[30 150];
+min_frequency = 30; % Minimum noise firing rate
+
+max_frequency = 150; % Maximum noise input firing rate
+
+frequency_limits = [min_frequency max_frequency];
+
+a =100;             %Excitatory time constant
+b =30;              %Slow inhibitory time constant original b=50
+g =350;             %Fast inhibitory time constant g =500
+
+tcon = [a b g]; % Specify reciprocal of the time constants for simulation
+
+Con = 135; % Connectivity constant, used to specify connectivty between neuronal types
+
+C= [Con; 0.8*Con; 0.25*Con; 0.25*Con; 0.3*Con; 0.1*Con; 0.8*Con]; % Connectivity Constants for all populations
 
 for q = 1:Simulation_number
     
@@ -127,7 +141,8 @@ for q = 1:Simulation_number
                 break
             end
             %
-           
+            gain = [Sigma(Ds+Dk+1,:,p); Sigma(Ds+Dk+2,:,p); Sigma(Ds+Dk+3,:,p)];
+            
             if Dk ==1
                 %                     if (LimitEst ==1)
                 %                         if (Sigma(Ds+1,k,p) < 0)
